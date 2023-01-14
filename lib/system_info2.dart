@@ -1,11 +1,3 @@
-library system_info2;
-
-import 'dart:collection';
-import 'dart:io';
-
-import 'package:file_utils/file_utils.dart';
-import 'package:path/path.dart' as pathos;
-
-part 'src/fluent.dart';
-part 'src/system_info.dart';
-part 'src/utils.dart';
+export 'src/core_info.dart';
+export 'src/processor_architecture.dart';
+export 'src/system_info.dart';

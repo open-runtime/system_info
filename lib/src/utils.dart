@@ -1,8 +1,13 @@
 // ignore_for_file: avoid_catches_without_on_clauses
 
-part of system_info2;
+import 'dart:io';
 
-String? _exec(String executable, List<String> arguments,
+import 'package:file_utils/file_utils.dart';
+import 'package:path/path.dart' as pathos;
+
+import 'fluent.dart';
+
+String? exec(String executable, List<String> arguments,
     {bool runInShell = false}) {
   try {
     final result =
@@ -17,7 +22,7 @@ String? _exec(String executable, List<String> arguments,
   return null;
 }
 
-String? _resolveLink(String path) {
+String? resolveLink(String path) {
   while (true) {
     if (!FileUtils.testfile(path, 'link')!) {
       break;
@@ -34,8 +39,8 @@ String? _resolveLink(String path) {
   return path;
 }
 
-void _parseLdConf(String path, List<String> paths, Set<String> processed) {
-  final _path = _resolveLink(path);
+void parseLdConf(String path, List<String> paths, Set<String> processed) {
+  final _path = resolveLink(path);
   if (_path == null) {
     return;
   }
@@ -71,7 +76,7 @@ void _parseLdConf(String path, List<String> paths, Set<String> processed) {
       for (final path in FileUtils.glob(line)) {
         if (!processed.contains(path)) {
           processed.add(path);
-          _parseLdConf(path, paths, processed);
+          parseLdConf(path, paths, processed);
         }
       }
     } else {
@@ -93,24 +98,28 @@ String? _wmicGetValue(String section, List<String> fields,
     ..add('get')
     ..addAll(fields.join(', ').split(' '))
     ..add('/VALUE');
-  return _exec('wmic', arguments);
+  return exec('wmic', arguments);
 }
 
-List<Map<String, String>>? _wmicGetValueAsGroups(
+List<Map<String, String>>? wmicGetValueAsGroups(
     String section, List<String> fields,
     {List<String>? where}) {
   final string = _wmicGetValue(section, fields, where: where);
-  return (_fluent(string)
+  return (fluent(string)
         ..stringToList()
         ..listToGroups('='))
       .groupsValue;
 }
 
-Map<String, String>? _wmicGetValueAsMap(String section, List<String> fields,
+Map<String, String>? wmicGetValueAsMap(String section, List<String> fields,
     {List<String>? where}) {
   final string = _wmicGetValue(section, fields, where: where);
-  return (_fluent(string)
+  return (fluent(string)
         ..stringToList()
         ..listToMap('='))
       .mapValue as Map<String, String>?;
+}
+
+Never notSupportedError() {
+  throw UnsupportedError('Unsupported operating system.');
 }

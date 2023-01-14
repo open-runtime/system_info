@@ -1,12 +1,12 @@
 // ignore_for_file: avoid_dynamic_calls, avoid_catches_without_on_clauses
 //, strict_raw_type
 
-part of system_info2;
+import 'dart:io';
 
-_Fluent _fluent(Object? value) => _Fluent(value);
+Fluent fluent(Object? value) => Fluent(value);
 
-class _Fluent {
-  _Fluent(this.value);
+class Fluent {
+  Fluent(this.value);
 
   dynamic value;
 
@@ -52,7 +52,7 @@ class _Fluent {
     return '';
   }
 
-  _Fluent operator [](Object key) {
+  Fluent operator [](Object key) {
     try {
       value = value[key];
     } catch (e) {

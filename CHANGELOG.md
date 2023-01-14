@@ -1,3 +1,10 @@
+# 3.0.0
+- Breaking Change: removed all classes/methods marked as @deprecated in 2.x.
+  To make your life easier be sure to remove all deprecated warnings before upgrading to
+  3.x
+- Breaking change, `ProcessorArchitecture.aarch64` renamed to `ProcessorArchitecture.arm64`
+- significant refactoring of the code base by breaking out code into seperate dart
+ files to improve readability.
 # 2.0.4
 - fixed getFreePhysicalMemory - big thanks to @jingluoguo for the patch
 
