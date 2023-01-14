@@ -1,3 +1,7 @@
+# 3.0.1
+- breaking: changed SysInfo.kernelArchitecture to return a ProcessorArchitecture rather than a string as it provides a more useful abstraction. 
+- Introduced the new SysInfo.rawKernelArchitecture which provides the same value as the original SysInfo.kernelArchitecture.
+
 # 3.0.0
 - Breaking Change: removed all classes/methods marked as @deprecated in 2.x.
   To make your life easier be sure to remove all deprecated warnings before upgrading to
