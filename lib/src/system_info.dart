@@ -7,15 +7,25 @@ import 'platform/memory.dart' as pm;
 import 'platform/operating_system.dart';
 import 'platform/user.dart';
 import 'platform/userspace.dart';
+import 'processor_architecture.dart';
 
 abstract class SysInfo {
   SysInfo._internal();
 
-  /// Returns the architecture of the kernel.
+  /// Returns the architecture of the kernel by obtaining
+  /// the [rawKernelArchitecture]
+  /// and converting it to a high level ProcessorArchitecture.
   ///
   ///     print(SysInfo.kernelArchitecture);
+  ///     => ProcessorArchitecture.x86
+  static late final ProcessorArchitecture kernelArchitecture =
+      getKernalArchitecture();
+
+  /// Returns the raw architecture of the kernel as reported by the OS
+  ///
+  ///     print(SysInfo.rawKernelArchitecture);
   ///     => i686
-  static late final String kernelArchitecture = getKernelArchitecture();
+  static late final String rawKernelArchitecture = getRawKernelArchitecture();
 
   /// Returns the bintness of kernel.
   ///

@@ -4,6 +4,7 @@ import 'package:file_utils/file_utils.dart';
 import 'package:path/path.dart' as pathos;
 
 import '../fluent.dart';
+import '../processor_architecture.dart';
 import '../utils.dart';
 import 'operating_system.dart';
 import 'userspace.dart';
@@ -69,7 +70,68 @@ int getKernelBitness() {
   }
 }
 
-String getKernelArchitecture() {
+/// Converts the value return by [getRawKernelArchitecture] into an
+/// high level type.
+/// Note that we only support a limited set of raw architecture types
+/// as per the [ProcessorArchitecture] enum.
+ProcessorArchitecture getKernalArchitecture() {
+  var processorArchitecture =
+      processorToArchitecure[getRawKernelArchitecture()];
+  return processorArchitecture ??= ProcessorArchitecture.unknown;
+}
+
+/// Returns the low level kernel archtecture as reported by the OS
+///
+/// The following list was taken from https://stackoverflow.com/questions/45125516/possible-values-for-uname-m
+///
+/// Thanks to Jonathon Reinhart for compiling the list!
+///
+/// Current known values are:
+///
+/// alpha
+/// arc
+/// arm
+/// aarch64_be (arm64)
+/// aarch64 (arm64)
+/// armv7l
+/// armv8b (arm64 compat)
+/// armv8l (arm64 compat)
+/// blackfin
+/// c6x
+/// cris
+/// frv
+/// h8300
+/// hexagon
+/// ia64
+/// m32r
+/// m68k
+/// metag
+/// microblaze
+/// mips (native or compat)
+/// mips64 (mips)
+/// mn10300
+/// nios2
+/// openrisc
+/// parisc (native or compat)
+/// parisc64 (parisc)
+/// ppc (powerpc native or compat)
+/// ppc64 (powerpc)
+/// ppcle (powerpc native or compat)
+/// ppc64le (powerpc)
+/// s390 (s390x compat)
+/// s390x
+/// score
+/// sh
+/// sh64 (sh)
+/// sparc (native or compat)
+/// sparc64 (sparc)
+/// tile
+/// unicore32
+/// i386 (x86)
+/// i686 (x86 compat)
+/// x86_64 (x64)
+/// xtensa
+String getRawKernelArchitecture() {
   switch (Platform.operatingSystem) {
     case 'android':
     case 'linux':
@@ -113,3 +175,49 @@ String getKernelVersion() {
       notSupportedError();
   }
 }
+
+final processorToArchitecure = <String, ProcessorArchitecture>{
+// 'alpha', ProcessorArchitecture.alpah,
+// 'arc'
+  'arm': ProcessorArchitecture.arm,
+  'aarch64_be': ProcessorArchitecture.arm64,
+  'aarch64': ProcessorArchitecture.arm64,
+  'armv7l': ProcessorArchitecture.arm,
+  'armv8b': ProcessorArchitecture.arm64,
+  'armv8l': ProcessorArchitecture.arm64,
+// 'blackfin'
+// 'c6x'
+// 'cris'
+// 'frv'
+// 'h8300'
+// 'hexagon'
+  'ia64': ProcessorArchitecture.ia64,
+// 'm32r'
+// 'm68k'
+// 'metag'
+// 'microblaze'
+  'mips': ProcessorArchitecture.mips,
+  'mips64': ProcessorArchitecture.mips,
+// 'mn10300'
+// 'nios2'
+// 'openrisc'
+// 'parisc' (native or compat)
+// 'parisc64' (parisc)
+// 'ppc' (powerpc native or compat)
+// 'ppc64' (powerpc)
+// 'ppcle' (powerpc native or compat)
+// 'ppc64le' (powerpc)
+// 's390' (s390x compat)
+// 's390x'
+// 'score'
+// 'sh'
+// 'sh64' (sh)
+// 'sparc' (native or compat)
+// 'sparc64' (sparc)
+// 'tile'
+// 'unicore32'
+  'i386': ProcessorArchitecture.x86,
+  'i686': ProcessorArchitecture.x86,
+  'x86_64': ProcessorArchitecture.x86_64
+// 'xtensa'
+};

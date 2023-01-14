@@ -2,6 +2,7 @@ import 'package:system_info2/system_info2.dart';
 
 void main() {
   print('Kernel architecture     : ${SysInfo.kernelArchitecture}');
+  print('Raw Kernel architecture : ${SysInfo.rawKernelArchitecture}');
   print('Kernel bitness          : ${SysInfo.kernelBitness}');
   print('Kernel name             : ${SysInfo.kernelName}');
   print('Kernel version          : ${SysInfo.kernelVersion}');
