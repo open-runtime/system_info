@@ -180,6 +180,8 @@ final processorToArchitecure = <String, ProcessorArchitecture>{
 // 'alpha', ProcessorArchitecture.alpah,
 // 'arc'
   'arm': ProcessorArchitecture.arm,
+  // Returned by Apple Silicon M2 when running uname -m
+  'arm64': ProcessorArchitecture.arm64,
   'aarch64_be': ProcessorArchitecture.arm64,
   'aarch64': ProcessorArchitecture.arm64,
   'armv7l': ProcessorArchitecture.arm,
