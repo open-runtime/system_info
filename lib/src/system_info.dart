@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'core_info.dart';
 import 'platform/cpu.dart';
 import 'platform/kernel.dart';
@@ -18,76 +16,74 @@ abstract class SysInfo {
   ///
   ///     print(SysInfo.kernelArchitecture);
   ///     => ProcessorArchitecture.x86
-  static late final ProcessorArchitecture kernelArchitecture =
+  static final ProcessorArchitecture kernelArchitecture =
       getKernalArchitecture();
 
   /// Returns the raw architecture of the kernel as reported by the OS
   ///
   ///     print(SysInfo.rawKernelArchitecture);
   ///     => i686
-  static late final String rawKernelArchitecture = getRawKernelArchitecture();
+  static final String rawKernelArchitecture = getRawKernelArchitecture();
 
   /// Returns the bintness of kernel.
   ///
   ///     print(SysInfo.kernelBitness);
   ///     => 32
-  static late final int kernelBitness = getKernelBitness();
+  static final int kernelBitness = getKernelBitness();
 
   /// Returns the name of kernel.
   ///
   ///     print(SysInfo.kernelName);
   ///     => Linux
-  static late final String kernelName = getKernelName();
+  static final String kernelName = getKernelName();
 
   /// Returns the version of kernel.
   ///
   ///     print(SysInfo.kernelVersion);
   ///     => 32
-  static late final String kernelVersion = getKernelVersion();
+  static final String kernelVersion = getKernelVersion();
 
   /// Returns the name of operating system.
   ///
   ///     print(SysInfo.operatingSystemName);
   ///     => Ubuntu
-  static late final String operatingSystemName = getOperatingSystemName();
+  static final String operatingSystemName = getOperatingSystemName();
 
   /// Returns the version of operating system.
   ///
   ///     print(SysInfo.operatingSystemVersion);
   ///     => 14.04
-  static late final String operatingSystemVersion = getOperatingSystemVersion();
+  static final String operatingSystemVersion = getOperatingSystemVersion();
 
   /// Returns the information about the processors.
   ///
   ///     print(SysInfo.processors.first.vendor);
   ///     => GenuineIntel
-  static late final List<CoreInfo> cores = getCores();
+  static final List<CoreInfo> cores = getCores();
 
   /// Returns the path of user home directory.
   ///
   ///     print(SysInfo.userDirectory);
   ///     => /home/andrew
-  static late final String userDirectory = getUserDirectory();
+  static final String userDirectory = getUserDirectory();
 
   /// Returns the identifier of current user.
   ///
   ///     print(SysInfo.userId);
   ///     => 1000
-  static late final String userId = getUserId();
+  static final String userId = getUserId();
 
   /// Returns the name of current user.
   ///
   ///     print(SysInfo.userName);
   ///     => 'Andrew'
-  static late final String userName = getUserName();
+  static final String userName = getUserName();
 
   /// Returns the bitness of the user space.
   ///
   ///     print(SysInfo.userSpaceBitness);
   ///     => 32
-  static late final int userSpaceBitness = getUserSpaceBitness();
-
-  static late final String _operatingSystem = Platform.operatingSystem;
+  static final int userSpaceBitness = getUserSpaceBitness();
 
   /// Returns the amount of free physical memory in bytes.
   ///
