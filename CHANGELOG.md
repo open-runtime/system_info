@@ -1,3 +1,6 @@
+# 3.0.2
+- Updated to kernel.dart processorToArchitecure map
+
 # 3.0.1
 - breaking: changed SysInfo.kernelArchitecture to return a ProcessorArchitecture rather than a string as it provides a more useful abstraction. 
 - Introduced the new SysInfo.rawKernelArchitecture which provides the same value as the original SysInfo.kernelArchitecture.
