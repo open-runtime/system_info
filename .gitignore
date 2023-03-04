@@ -20,3 +20,4 @@ doc/api/
 *.js.deps
 *.js.map.failed_tracker
 .failed_tracker
+.history
