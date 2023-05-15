@@ -2,9 +2,9 @@
 
 import 'dart:io';
 
-import 'package:file_utils/file_utils.dart';
 import 'package:path/path.dart' as pathos;
 
+import 'file_utils.dart';
 import 'fluent.dart';
 
 String? exec(String executable, List<String> arguments,
@@ -24,7 +24,7 @@ String? exec(String executable, List<String> arguments,
 
 String? resolveLink(String path) {
   while (true) {
-    if (!FileUtils.testfile(path, 'link')!) {
+    if (!FileUtils.testfile(path, 'link')) {
       break;
     }
 
@@ -50,7 +50,7 @@ void parseLdConf(String path, List<String> paths, Set<String> processed) {
     return;
   }
 
-  final dir = FileUtils.dirname(_path);
+  final dir = pathos.dirname(_path);
   for (var line in file.readAsLinesSync()) {
     line = line.trim();
     final index = line.indexOf('#');

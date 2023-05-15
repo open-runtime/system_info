@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:file_utils/file_utils.dart';
 import 'package:path/path.dart' as pathos;
 
+import '../file_utils.dart';
 import '../fluent.dart';
 import '../processor_architecture.dart';
 import '../utils.dart';

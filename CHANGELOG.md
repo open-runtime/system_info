@@ -1,3 +1,8 @@
+# 4.0.0
+- upgraded to support dart 3.0
+- removed dependency on deprecated file_utils package by coping
+ the required classes into system_info.
+
 # 3.0.2
 - Updated to kernel.dart processorToArchitecure map
 
