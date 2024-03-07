@@ -3,11 +3,11 @@ version: 4.0.0
 homepage: https://sysinfo.onepub.dev
 documentation: https://sysinfo.onepub.dev
 description: Provides easy access to useful information about the system (architecture, bitness, kernel, memory, operating system, CPU, user).
-repository: https://github.com/onepub-dev/system_info
-environment: 
-  sdk: '>=2.19.0 <4.0.0'
+repository: https://github.com/open-runtime/system_info
+environment:
+  sdk: '>=3.0.0 <4.0.0'
 dependencies: 
   globbing: ^1.0.0
   path: ^1.8.0
 dev_dependencies: 
-  lint_hard: ^3.0.0
+  lint_hard: ^4.0.0
