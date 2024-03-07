@@ -1,4 +1,4 @@
-import 'package:system_info2/system_info2.dart';
+import 'package:system_info/system_info.dart';
 
 void main() {
   print('Kernel architecture     : ${SysInfo.kernelArchitecture}');
