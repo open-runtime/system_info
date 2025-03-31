@@ -95,8 +95,7 @@ int getTotalPhysicalMemory() {
           .intValue;
       return size * pageSize;
     case 'windows':
-      final data =
-          wmicGetValueAsMap('ComputerSystem', ['TotalPhysicalMemory'])!;
+      final data = wmicGetValueAsMap('ComputerSystem', ['TotalPhysicalMemory'])!;
       final value = (fluent(data['TotalPhysicalMemory'])..parseInt()).intValue;
       return value;
     default:
@@ -155,8 +154,7 @@ int getTotalVirtualMemory() {
       return (free + active + inactive + speculative + wired) * pageSize;
     case 'windows':
       final data = wmicGetValueAsMap('OS', ['TotalVirtualMemorySize'])!;
-      final value =
-          (fluent(data['TotalVirtualMemorySize'])..parseInt()).intValue;
+      final value = (fluent(data['TotalVirtualMemorySize'])..parseInt()).intValue;
       return value * 1024;
     default:
       notSupportedError();
@@ -175,8 +173,7 @@ int getVirtualMemorySize() {
       final size = (fluent(data.elementAt(1))..parseInt()).intValue;
       return size * 1024;
     case 'windows':
-      final data = wmicGetValueAsMap('Process', ['VirtualSize'],
-          where: ["Handle='$pid'"])!;
+      final data = wmicGetValueAsMap('Process', ['VirtualSize'], where: ["Handle='$pid'"])!;
       final value = (fluent(data['VirtualSize'])..parseInt()).intValue;
       return value;
     default:

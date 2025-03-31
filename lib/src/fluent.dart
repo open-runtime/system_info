@@ -73,11 +73,9 @@ class Fluent {
     }
   }
 
-  void exec(String executable, List<String> arguments,
-      {bool runInShell = false}) {
+  void exec(String executable, List<String> arguments, {bool runInShell = false}) {
     try {
-      final result =
-          Process.runSync(executable, arguments, runInShell: runInShell);
+      final result = Process.runSync(executable, arguments, runInShell: runInShell);
       if (result.exitCode == 0) {
         value = result.stdout.toString();
       }

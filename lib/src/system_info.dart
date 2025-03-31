@@ -16,8 +16,7 @@ abstract class SysInfo {
   ///
   ///     print(SysInfo.kernelArchitecture);
   ///     => ProcessorArchitecture.x86
-  static final ProcessorArchitecture kernelArchitecture =
-      getKernalArchitecture();
+  static final ProcessorArchitecture kernelArchitecture = getKernalArchitecture();
 
   /// Returns the raw architecture of the kernel as reported by the OS
   ///

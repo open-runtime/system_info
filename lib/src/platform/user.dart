@@ -24,8 +24,7 @@ String getUserId() {
     case 'macos':
       return (fluent(exec('id', ['-u']))..trim()).stringValue;
     case 'windows':
-      final data = wmicGetValueAsMap('UserAccount', ['SID'],
-          where: ["Name='${SysInfo.userName}'"])!;
+      final data = wmicGetValueAsMap('UserAccount', ['SID'], where: ["Name='${SysInfo.userName}'"])!;
       return fluent(data['SID']).stringValue;
     default:
       notSupportedError();

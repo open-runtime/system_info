@@ -35,8 +35,7 @@ int getKernelBitness() {
 
           final file = File(resolvedFilePath);
           if (file.existsSync()) {
-            final fileType =
-                (fluent(exec('file', ['-b', file.path]))..trim()).stringValue;
+            final fileType = (fluent(exec('file', ['-b', file.path]))..trim()).stringValue;
             if (fileType.startsWith('ELF 64-bit')) {
               return 64;
             }
@@ -52,8 +51,7 @@ int getKernelBitness() {
 
       return 32;
     case 'windows':
-      final wow64 =
-          fluent(Platform.environment['PROCESSOR_ARCHITEW6432']).stringValue;
+      final wow64 = fluent(Platform.environment['PROCESSOR_ARCHITEW6432']).stringValue;
       if (wow64.isNotEmpty) {
         return 64;
       }
@@ -75,8 +73,7 @@ int getKernelBitness() {
 /// Note that we only support a limited set of raw architecture types
 /// as per the [ProcessorArchitecture] enum.
 ProcessorArchitecture getKernalArchitecture() {
-  var processorArchitecture =
-      processorToArchitecure[getRawKernelArchitecture()];
+  var processorArchitecture = processorToArchitecure[getRawKernelArchitecture()];
   return processorArchitecture ??= ProcessorArchitecture.unknown;
 }
 
@@ -138,8 +135,7 @@ String getRawKernelArchitecture() {
     case 'macos':
       return (fluent(exec('uname', ['-m']))..trim()).stringValue;
     case 'windows':
-      final wow64 =
-          fluent(Platform.environment['PROCESSOR_ARCHITEW6432']).stringValue;
+      final wow64 = fluent(Platform.environment['PROCESSOR_ARCHITEW6432']).stringValue;
       if (wow64.isNotEmpty) {
         return wow64;
       }

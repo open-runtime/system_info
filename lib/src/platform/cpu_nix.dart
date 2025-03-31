@@ -69,8 +69,7 @@ UnmodifiableListView<CoreInfo> getNixCores() {
       }
     }
 
-    final processor = CoreInfo(
-        architecture: architecture, name: name, socket: socket, vendor: vendor);
+    final processor = CoreInfo(architecture: architecture, name: name, socket: socket, vendor: vendor);
     cores.add(processor);
   }
 

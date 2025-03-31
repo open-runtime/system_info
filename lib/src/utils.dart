@@ -7,11 +7,9 @@ import 'package:path/path.dart' as pathos;
 import 'file_utils.dart';
 import 'fluent.dart';
 
-String? exec(String executable, List<String> arguments,
-    {bool runInShell = false}) {
+String? exec(String executable, List<String> arguments, {bool runInShell = false}) {
   try {
-    final result =
-        Process.runSync(executable, arguments, runInShell: runInShell);
+    final result = Process.runSync(executable, arguments, runInShell: runInShell);
     if (result.exitCode == 0) {
       return result.stdout.toString();
     }
@@ -85,8 +83,7 @@ void parseLdConf(String path, List<String> paths, Set<String> processed) {
   }
 }
 
-String? _wmicGetValue(String section, List<String> fields,
-    {List<String>? where}) {
+String? _wmicGetValue(String section, List<String> fields, {List<String>? where}) {
   final arguments = <String>[section];
   if (where != null) {
     arguments
@@ -101,9 +98,7 @@ String? _wmicGetValue(String section, List<String> fields,
   return exec('wmic', arguments);
 }
 
-List<Map<String, String>>? wmicGetValueAsGroups(
-    String section, List<String> fields,
-    {List<String>? where}) {
+List<Map<String, String>>? wmicGetValueAsGroups(String section, List<String> fields, {List<String>? where}) {
   final string = _wmicGetValue(section, fields, where: where);
   return (fluent(string)
         ..stringToList()
@@ -111,8 +106,7 @@ List<Map<String, String>>? wmicGetValueAsGroups(
       .groupsValue;
 }
 
-Map<String, String>? wmicGetValueAsMap(String section, List<String> fields,
-    {List<String>? where}) {
+Map<String, String>? wmicGetValueAsMap(String section, List<String> fields, {List<String>? where}) {
   final string = _wmicGetValue(section, fields, where: where);
   return (fluent(string)
         ..stringToList()

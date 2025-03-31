@@ -26,10 +26,7 @@ class FilePath {
     if (_isWindows) {
       final drive = Platform.environment['HOMEDRIVE'];
       final path = Platform.environment['HOMEPATH'];
-      if (drive != null &&
-          drive.isNotEmpty &&
-          path != null &&
-          path.isNotEmpty) {
+      if (drive != null && drive.isNotEmpty && path != null && path.isNotEmpty) {
         home = drive + path;
       } else {
         home = Platform.environment['USERPROFILE'] ?? '';

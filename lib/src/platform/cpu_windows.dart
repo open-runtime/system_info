@@ -7,8 +7,7 @@ import '../utils.dart';
 import 'cpu.dart';
 
 UnmodifiableListView<CoreInfo> getWindowsCores() {
-  final groups = wmicGetValueAsGroups('CPU',
-      ['Architecture', 'DataWidth', 'Manufacturer', 'Name', 'NumberOfCores'])!;
+  final groups = wmicGetValueAsGroups('CPU', ['Architecture', 'DataWidth', 'Manufacturer', 'Name', 'NumberOfCores'])!;
   final numberOfSockets = groups.length;
   final cores = <CoreInfo>[];
   for (var i = 0; i < numberOfSockets; i++) {
@@ -41,11 +40,7 @@ UnmodifiableListView<CoreInfo> getWindowsCores() {
     for (var socket = 0; socket < numberOfCores; socket++) {
       final name = fluent(data['Name']).stringValue;
       final vendor = fluent(data['Manufacturer']).stringValue;
-      final core = CoreInfo(
-          architecture: architecture,
-          name: name,
-          socket: socket,
-          vendor: vendor);
+      final core = CoreInfo(architecture: architecture, name: name, socket: socket, vendor: vendor);
       cores.add(core);
     }
   }

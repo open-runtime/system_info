@@ -24,8 +24,7 @@ List<CoreInfo> getCores() {
   }
 }
 
-ProcessorArchitecture getProcessorArchitecture(
-    String name, Map<String, String> group) {
+ProcessorArchitecture getProcessorArchitecture(String name, Map<String, String> group) {
   final uppercaseName = name.toUpperCase();
   var architecture = ProcessorArchitecture.unknown;
   if (uppercaseName.startsWith('AMD')) {

@@ -96,9 +96,7 @@ class FileUtils {
   ///  [removed]
   ///   Function that is called whenever an item is removed.
   static List<String> exclude(List<String> files, String pattern,
-      {void Function(String path)? added,
-      bool? caseSensitive,
-      void Function(String path)? removed}) {
+      {void Function(String path)? added, bool? caseSensitive, void Function(String path)? removed}) {
     pattern = FilePath.expand(pattern);
     if (!pathos.isAbsolute(pattern)) {
       pattern = '${getcwd()}/$pattern';
@@ -106,10 +104,7 @@ class FileUtils {
 
     bool isDirectory(String path) => Directory(path).existsSync();
 
-    final filter = GlobFilter(pattern,
-        caseSensitive: caseSensitive,
-        isDirectory: isDirectory,
-        isWindows: _isWindows);
+    final filter = GlobFilter(pattern, caseSensitive: caseSensitive, isDirectory: isDirectory, isWindows: _isWindows);
 
     return filter.exclude(files, added: added, removed: removed);
   }
@@ -179,8 +174,7 @@ class FileUtils {
   ///   True, if the pattern is case sensitive; otherwise false.
   ///  [notify]
   ///   Function that is called whenever an item is added.
-  static List<String> glob(String pattern,
-      {bool? caseSensitive, void Function(String path)? notify}) {
+  static List<String> glob(String pattern, {bool? caseSensitive, void Function(String path)? notify}) {
     pattern = FilePath.expand(pattern);
     Directory directory;
     if (pathos.isAbsolute(pattern)) {
@@ -205,8 +199,7 @@ class FileUtils {
       directory = Directory.current;
     }
 
-    return FileList(directory, pattern,
-        caseSensitive: caseSensitive, notify: notify);
+    return FileList(directory, pattern, caseSensitive: caseSensitive, notify: notify);
   }
 
   /// Returns a list of paths from which will be removed elements that do not
@@ -224,9 +217,7 @@ class FileUtils {
   ///  [removed]
   ///   Function that is called whenever an item is removed.
   static List<String> include(List<String> files, String pattern,
-      {void Function(String path)? added,
-      bool? caseSensitive,
-      void Function(String path)? removed}) {
+      {void Function(String path)? added, bool? caseSensitive, void Function(String path)? removed}) {
     pattern = FilePath.expand(pattern);
     if (!pathos.isAbsolute(pattern)) {
       pattern = '${getcwd()}/$pattern';
@@ -234,10 +225,7 @@ class FileUtils {
 
     bool isDirectory(String path) => Directory(path).existsSync();
 
-    final filter = GlobFilter(pattern,
-        caseSensitive: caseSensitive,
-        isDirectory: isDirectory,
-        isWindows: _isWindows);
+    final filter = GlobFilter(pattern, caseSensitive: caseSensitive, isDirectory: isDirectory, isWindows: _isWindows);
 
     return filter.include(files, added: added, removed: removed);
   }
@@ -356,8 +344,7 @@ class FileUtils {
   ///
   /// If [recursive] is set to true remove the directories and their contents
   /// recursively.
-  static bool rm(List<String> files,
-      {bool directory = false, bool force = false, bool recursive = false}) {
+  static bool rm(List<String> files, {bool directory = false, bool force = false, bool recursive = false}) {
     if (files.isEmpty) {
       return false;
     }
@@ -632,11 +619,8 @@ class FileUtils {
     return true;
   }
 
-  static int _shell(String command, List<String> arguments,
-          {String? workingDirectory}) =>
-      Process.runSync(command, arguments,
-              runInShell: true, workingDirectory: workingDirectory)
-          .exitCode;
+  static int _shell(String command, List<String> arguments, {String? workingDirectory}) =>
+      Process.runSync(command, arguments, runInShell: true, workingDirectory: workingDirectory).exitCode;
 
   static bool _touchOnPosix(String name, bool create) {
     final arguments = <String>[name];
@@ -680,8 +664,6 @@ class FileUtils {
       workingDirectory = '.';
     }
 
-    return _shell('copy', ['/b', name, '+', ',', ','],
-            workingDirectory: workingDirectory) ==
-        0;
+    return _shell('copy', ['/b', name, '+', ',', ','], workingDirectory: workingDirectory) == 0;
   }
 }

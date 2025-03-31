@@ -21,8 +21,7 @@ int getUserSpaceBitness() {
         return getKernelBitness();
       }
     case 'windows':
-      final wow64 =
-          fluent(Platform.environment['PROCESSOR_ARCHITEW6432']).stringValue;
+      final wow64 = fluent(Platform.environment['PROCESSOR_ARCHITEW6432']).stringValue;
       if (wow64.isNotEmpty) {
         return 32;
       }

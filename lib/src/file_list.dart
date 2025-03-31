@@ -17,8 +17,7 @@ class FileList extends Object with ListMixin<String> {
   ///   True, if the pattern is case sensitive; otherwise false.
   ///  [notify]
   ///   Function that is called whenever an item is added.
-  FileList(this.directory, String pattern,
-      {bool? caseSensitive, void Function(String path)? notify}) {
+  FileList(this.directory, String pattern, {bool? caseSensitive, void Function(String path)? notify}) {
     if (caseSensitive == null) {
       if (_isWindows) {
         caseSensitive = false;
@@ -77,11 +76,7 @@ class FileList extends Object with ListMixin<String> {
 
   List<String> _getFiles() {
     final lister = GlobLister(_pattern,
-        caseSensitive: _caseSensitive,
-        exists: _exists,
-        isDirectory: _isDirectory,
-        isWindows: _isWindows,
-        list: _list);
+        caseSensitive: _caseSensitive, exists: _exists, isDirectory: _isDirectory, isWindows: _isWindows, list: _list);
     return lister.list(directory.path, notify: _notify) ?? <String>[];
   }
 
@@ -90,10 +85,7 @@ class FileList extends Object with ListMixin<String> {
   List<String> _list(String path, bool? followLinks) {
     List<String> result;
     try {
-      result = Directory(path)
-          .listSync(followLinks: followLinks ?? true)
-          .map((e) => e.path)
-          .toList();
+      result = Directory(path).listSync(followLinks: followLinks ?? true).map((e) => e.path).toList();
       // ignore: avoid_catches_without_on_clauses
     } catch (e) {
       result = <String>[];
