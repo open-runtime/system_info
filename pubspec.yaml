@@ -8,6 +8,6 @@ environment:
   sdk: '>=3.3.0 <4.5.0'
 dependencies: 
   globbing: ^1.0.0
-  path: ^1.9.0
+  path: ^1.9.1
 dev_dependencies: 
-  lint_hard: ^4.0.0
+  lint_hard: ^6.0.0
