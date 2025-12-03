@@ -21,14 +21,24 @@ void main() {
     print('  Socket                : ${core.socket}');
     print('  Vendor                : ${core.vendor}');
   }
-  print('Total physical memory   : '
-      '${SysInfo.getTotalPhysicalMemory() ~/ megaByte} MB');
-  print('Free physical memory    : '
-      '${SysInfo.getFreePhysicalMemory() ~/ megaByte} MB');
-  print('Total virtual memory    : '
-      '${SysInfo.getTotalVirtualMemory() ~/ megaByte} MB');
-  print('Free virtual memory     : '
-      '${SysInfo.getFreeVirtualMemory() ~/ megaByte} MB');
-  print('Virtual memory size     : '
-      '${SysInfo.getVirtualMemorySize() ~/ megaByte} MB');
+  print(
+    'Total physical memory   : '
+    '${SysInfo.getTotalPhysicalMemory() ~/ megaByte} MB',
+  );
+  print(
+    'Free physical memory    : '
+    '${SysInfo.getFreePhysicalMemory() ~/ megaByte} MB',
+  );
+  print(
+    'Total virtual memory    : '
+    '${SysInfo.getTotalVirtualMemory() ~/ megaByte} MB',
+  );
+  print(
+    'Free virtual memory     : '
+    '${SysInfo.getFreeVirtualMemory() ~/ megaByte} MB',
+  );
+  print(
+    'Virtual memory size     : '
+    '${SysInfo.getVirtualMemorySize() ~/ megaByte} MB',
+  );
 }

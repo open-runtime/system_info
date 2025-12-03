@@ -7,16 +7,18 @@ String getOperatingSystemName() {
   switch (Platform.operatingSystem) {
     case 'android':
     case 'linux':
-      final data = (fluent(exec('lsb_release', ['-a']))
-            ..trim()
-            ..stringToMap(':'))
-          .mapValue;
+      final data =
+          (fluent(exec('lsb_release', ['-a']))
+                ..trim()
+                ..stringToMap(':'))
+              .mapValue;
       return fluent(data['Distributor ID']).stringValue;
     case 'macos':
-      final data = (fluent(exec('sw_vers', []))
-            ..trim()
-            ..stringToMap(':'))
-          .mapValue;
+      final data =
+          (fluent(exec('sw_vers', []))
+                ..trim()
+                ..stringToMap(':'))
+              .mapValue;
       return fluent(data['ProductName']).stringValue;
     case 'windows':
       final data = wmicGetValueAsMap('OS', ['Caption'])!;
@@ -30,16 +32,18 @@ String getOperatingSystemVersion() {
   switch (Platform.operatingSystem) {
     case 'android':
     case 'linux':
-      final data = (fluent(exec('lsb_release', ['-a']))
-            ..trim()
-            ..stringToMap(':'))
-          .mapValue;
+      final data =
+          (fluent(exec('lsb_release', ['-a']))
+                ..trim()
+                ..stringToMap(':'))
+              .mapValue;
       return fluent(data['Release']).stringValue;
     case 'macos':
-      final data = (fluent(exec('sw_vers', []))
-            ..trim()
-            ..stringToMap(':'))
-          .mapValue;
+      final data =
+          (fluent(exec('sw_vers', []))
+                ..trim()
+                ..stringToMap(':'))
+              .mapValue;
       return fluent(data['ProductVersion']).stringValue;
     case 'windows':
       final data = wmicGetValueAsMap('OS', ['Version'])!;

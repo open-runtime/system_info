@@ -109,9 +109,10 @@ List<Map<String, String>>? wmicGetValueAsGroups(String section, List<String> fie
 Map<String, String>? wmicGetValueAsMap(String section, List<String> fields, {List<String>? where}) {
   final string = _wmicGetValue(section, fields, where: where);
   return (fluent(string)
-        ..stringToList()
-        ..listToMap('='))
-      .mapValue as Map<String, String>?;
+            ..stringToList()
+            ..listToMap('='))
+          .mapValue
+      as Map<String, String>?;
 }
 
 Never notSupportedError() {

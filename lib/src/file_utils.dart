@@ -95,8 +95,13 @@ class FileUtils {
   ///   True, if the pattern is case sensitive; otherwise false.
   ///  [removed]
   ///   Function that is called whenever an item is removed.
-  static List<String> exclude(List<String> files, String pattern,
-      {void Function(String path)? added, bool? caseSensitive, void Function(String path)? removed}) {
+  static List<String> exclude(
+    List<String> files,
+    String pattern, {
+    void Function(String path)? added,
+    bool? caseSensitive,
+    void Function(String path)? removed,
+  }) {
     pattern = FilePath.expand(pattern);
     if (!pathos.isAbsolute(pattern)) {
       pattern = '${getcwd()}/$pattern';
@@ -216,8 +221,13 @@ class FileUtils {
   ///   True, if the pattern is case sensitive; otherwise false.
   ///  [removed]
   ///   Function that is called whenever an item is removed.
-  static List<String> include(List<String> files, String pattern,
-      {void Function(String path)? added, bool? caseSensitive, void Function(String path)? removed}) {
+  static List<String> include(
+    List<String> files,
+    String pattern, {
+    void Function(String path)? added,
+    bool? caseSensitive,
+    void Function(String path)? removed,
+  }) {
     pattern = FilePath.expand(pattern);
     if (!pathos.isAbsolute(pattern)) {
       pattern = '${getcwd()}/$pattern';

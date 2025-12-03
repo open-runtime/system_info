@@ -75,8 +75,14 @@ class FileList extends Object with ListMixin<String> {
   }
 
   List<String> _getFiles() {
-    final lister = GlobLister(_pattern,
-        caseSensitive: _caseSensitive, exists: _exists, isDirectory: _isDirectory, isWindows: _isWindows, list: _list);
+    final lister = GlobLister(
+      _pattern,
+      caseSensitive: _caseSensitive,
+      exists: _exists,
+      isDirectory: _isDirectory,
+      isWindows: _isWindows,
+      list: _list,
+    );
     return lister.list(directory.path, notify: _notify) ?? <String>[];
   }
 

@@ -7,10 +7,11 @@ import '../utils.dart';
 import 'cpu.dart';
 
 UnmodifiableListView<CoreInfo> getMacOSCores() {
-  final data = (fluent(exec('sysctl', ['machdep.cpu']))
-        ..trim()
-        ..stringToMap(':'))
-      .mapValue;
+  final data =
+      (fluent(exec('sysctl', ['machdep.cpu']))
+            ..trim()
+            ..stringToMap(':'))
+          .mapValue;
   var architecture = ProcessorArchitecture.unknown;
   if (data['machdep.cpu.vendor'] == 'GenuineIntel') {
     architecture = ProcessorArchitecture.x86;

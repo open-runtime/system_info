@@ -173,8 +173,8 @@ String getKernelVersion() {
 }
 
 final processorToArchitecure = <String, ProcessorArchitecture>{
-// 'alpha', ProcessorArchitecture.alpah,
-// 'arc'
+  // 'alpha', ProcessorArchitecture.alpah,
+  // 'arc'
   'arm': ProcessorArchitecture.arm,
   // Returned by Apple Silicon M2 when running uname -m
   'arm64': ProcessorArchitecture.arm64,
@@ -183,39 +183,39 @@ final processorToArchitecure = <String, ProcessorArchitecture>{
   'armv7l': ProcessorArchitecture.arm,
   'armv8b': ProcessorArchitecture.arm64,
   'armv8l': ProcessorArchitecture.arm64,
-// 'blackfin'
-// 'c6x'
-// 'cris'
-// 'frv'
-// 'h8300'
-// 'hexagon'
+  // 'blackfin'
+  // 'c6x'
+  // 'cris'
+  // 'frv'
+  // 'h8300'
+  // 'hexagon'
   'ia64': ProcessorArchitecture.ia64,
-// 'm32r'
-// 'm68k'
-// 'metag'
-// 'microblaze'
+  // 'm32r'
+  // 'm68k'
+  // 'metag'
+  // 'microblaze'
   'mips': ProcessorArchitecture.mips,
   'mips64': ProcessorArchitecture.mips,
-// 'mn10300'
-// 'nios2'
-// 'openrisc'
-// 'parisc' (native or compat)
-// 'parisc64' (parisc)
-// 'ppc' (powerpc native or compat)
-// 'ppc64' (powerpc)
-// 'ppcle' (powerpc native or compat)
-// 'ppc64le' (powerpc)
-// 's390' (s390x compat)
-// 's390x'
-// 'score'
-// 'sh'
-// 'sh64' (sh)
-// 'sparc' (native or compat)
-// 'sparc64' (sparc)
-// 'tile'
-// 'unicore32'
+  // 'mn10300'
+  // 'nios2'
+  // 'openrisc'
+  // 'parisc' (native or compat)
+  // 'parisc64' (parisc)
+  // 'ppc' (powerpc native or compat)
+  // 'ppc64' (powerpc)
+  // 'ppcle' (powerpc native or compat)
+  // 'ppc64le' (powerpc)
+  // 's390' (s390x compat)
+  // 's390x'
+  // 'score'
+  // 'sh'
+  // 'sh64' (sh)
+  // 'sparc' (native or compat)
+  // 'sparc64' (sparc)
+  // 'tile'
+  // 'unicore32'
   'i386': ProcessorArchitecture.x86,
   'i686': ProcessorArchitecture.x86,
-  'x86_64': ProcessorArchitecture.x86_64
-// 'xtensa'
+  'x86_64': ProcessorArchitecture.x86_64,
+  // 'xtensa'
 };

@@ -7,11 +7,12 @@ import 'cpu.dart';
 
 UnmodifiableListView<CoreInfo> getNixCores() {
   final cores = <CoreInfo>[];
-  final groups = (fluent(exec('cat', ['/proc/cpuinfo']))
-        ..trim()
-        ..stringToList()
-        ..listToGroups(':'))
-      .groupsValue!;
+  final groups =
+      (fluent(exec('cat', ['/proc/cpuinfo']))
+            ..trim()
+            ..stringToList()
+            ..listToGroups(':'))
+          .groupsValue!;
 
   final processorGroups = groups.where((e) => e.keys.contains('processor'));
   String? cpuImplementer = '';
