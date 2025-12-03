@@ -65,7 +65,6 @@ UnmodifiableListView<CoreInfo> getNixCores() {
       switch (cpuImplementer!.toLowerCase()) {
         case '0x51':
           vendor = 'Qualcomm';
-          break;
         default:
       }
     }

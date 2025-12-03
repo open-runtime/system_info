@@ -17,24 +17,18 @@ UnmodifiableListView<CoreInfo> getWindowsCores() {
     switch ((fluent(data['Architecture'])..parseInt()).intValue) {
       case 0:
         architecture = ProcessorArchitecture.x86;
-        break;
       case 1:
         architecture = ProcessorArchitecture.mips;
-        break;
       case 5:
         switch ((fluent(data['DataWidth'])..parseInt()).intValue) {
           case 32:
             architecture = ProcessorArchitecture.arm;
-            break;
           case 64:
             architecture = ProcessorArchitecture.arm64;
-            break;
         }
 
-        break;
       case 9:
         architecture = ProcessorArchitecture.x86_64;
-        break;
     }
 
     for (var socket = 0; socket < numberOfCores; socket++) {

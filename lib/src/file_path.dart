@@ -155,7 +155,6 @@ class FilePath {
             sb.write(s);
           }
 
-          break;
         case '[':
           sb.write(s);
           if (i + 1 < length) {
@@ -174,10 +173,8 @@ class FilePath {
             }
           }
 
-          break;
         default:
           sb.write(s);
-          break;
       }
     }
 

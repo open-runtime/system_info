@@ -320,13 +320,10 @@ class FileUtils {
     switch (FileStat.statSync(src).type) {
       case FileSystemEntityType.directory:
         entity = Directory(src);
-        break;
       case FileSystemEntityType.file:
         entity = File(src);
-        break;
       case FileSystemEntityType.link:
         entity = Link(src);
-        break;
     }
 
     if (entity == null) {
